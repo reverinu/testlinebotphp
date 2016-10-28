@@ -124,6 +124,12 @@ if ($text == 'はい') {
       ]
     ]
   ];
+} else if ($text == '1d100') {
+	$random = rand(1,100);
+	$response_format_text = [
+		"type" => "text",
+		"text" => $random
+	];
 } else {
   $response_format_text = [
     "type" => "template",
