@@ -39,16 +39,6 @@ if ($text == 'はい') {
             "data" => "action=pcall&itemid=123"
           ],
           [
-            "type" => "uri",
-            "label" => "詳しく見る",
-            "uri" => "https://" . $_SERVER['SERVER_NAME'] . "/"
-          ],
-          [
-            "type" => "message",
-            "label" => "違うやつ",
-            "text" => "違うやつお願い"
-          ],
-          [
             "type" => "message",
             "label" => "違くないやつ",
             "text" => "違うやつお願い"
