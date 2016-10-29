@@ -45,7 +45,7 @@ if($join == 'join'){
 if ($text == '@help') {
 	$response_format_text = [
 		"type" => "text",
-		"text" => "ヘルプだよ"
+		"text" => "ヘルプ\nヘルプだよ"
 	];
 } else if ($text == '@join') {
 	$response_format_text = [
