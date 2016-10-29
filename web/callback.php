@@ -55,17 +55,24 @@ if ($text == '@help') {
 		"type" => "text",
 		"text" => "時間をスキップしたよ。\n昼時間になりました。この中に人狼が居ます。議論して探してください"
 	];
-} else if ($text == '@haiyaku1') {
+} else if ($text == '@haiyaku') {
 	$response_format_text = [
-		"type" => "text",
-		"text" => "あなたは狂人です"
-	];
-} else if ($text == '@haiyaku2') {
-	$response_format_text = [
-		"type" => "image",
-		"originalContentUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/kyojin.jpeg",
-		"previewContentUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/kyojin.jpeg"
-	];
+    "type" => "template",
+    "altText" => "あなたは狂人です",
+    "template" => [
+      "type" => "buttons",
+      "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/kyojin.jpeg",
+      "title" => "あなたの役職",
+      "text" => "あなたは狂人です。",
+      "actions" => [
+          [
+            "type" => "message",
+            "label" => "了解",
+            "text" => "了解"
+          ]
+      ]
+    ]
+  ];
 } else if ($text == '@vote') {
 	$response_format_text = [
     "type" => "template",
