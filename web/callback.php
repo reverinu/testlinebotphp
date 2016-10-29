@@ -26,7 +26,7 @@ $replyToken = $jsonObj->{"events"}[0]->{"replyToken"};
 $sourseType = $jsonObj->{"events"}[1]->{"sourse"}->{"type"};
 $roomid = $jsonObj->{"events"}[1]->{"sourse"}->{"roomid"};
 
-$join = $jsonObj->{"type"};
+$join = $jsonObj->{"events"}[0]->{"type"};
 
 
 //メッセージ以外のときは何も返さず終了
