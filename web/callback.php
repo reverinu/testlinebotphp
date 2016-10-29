@@ -43,14 +43,14 @@ if ($text == '@help') {
 } else if ($text == '@start') {
 	$response_format_text = [
 		"type" => "text",
-		"text" => "ワオーーーン\n\n\n狼の遠吠えが聞こえる…\n\n夜時間です。各自行動をしてください。"
+		"text" => "ワオーーーン\n\n\n狼の遠吠えが聞こえる…\n\n夜時間です。各自行動をしてください。\n\n終わったら@nightendって言ってね！"
 	];
 } else if ($text == '@rule') {
 	$response_format_text = [
 		"type" => "text",
-		"text" => "ワンナイト人狼ルール説明\n\nある日、あなたたちの住んでいる村に狼がいるといううわさが流れてきた。\nこの村は人が１０人にも満たなくて、１日以内に人狼を探し出さないといけない！\n\n村陣営勝利条件：人狼を吊ること\n狼陣営勝利条件：人狼以外を吊ること"
+		"text" => "ワンナイト人狼ルール説明\n\nある日、あなたたちの住んでいる村に狼がいるといううわさが流れてきた。\nこの村は人が１０人にも満たなくて、１日以内に人狼を探し出さないといけない！\n\n村陣営勝利条件：人狼を吊ること\n狼陣営勝利条件：人狼以外を吊ること\n\n\n役職説明\n\n村人：とくになし\n占い師：夜時間に誰か一人の役職もしくは逃亡者２人の役職を見ることが出来る\n怪盗：夜時間に誰か一人と自分の役職を入れ替えることが出来る\n人狼：とくになし\n狂人：狼陣営の村人\n"
 	];
-} else if ($text == '@skip') {
+} else if ($text == '@nightend') {
 	$response_format_text = [
 		"type" => "text",
 		"text" => "時間をスキップしたよ。\n昼時間になりました。この中に人狼が居ます。議論して探してください"
@@ -68,7 +68,7 @@ if ($text == '@help') {
           [
             "type" => "message",
             "label" => "了解",
-            "text" => "了解"
+            "text" => "@了解"
           ]
       ]
     ]
@@ -86,18 +86,86 @@ if ($text == '@help') {
           [
             "type" => "message",
             "label" => "川犬(kawaken)",
-            "text" => "川犬(kawaken)"
+            "text" => "@川犬(kawaken)"
           ],
           [
             "type" => "message",
             "label" => "石井翼",
-            "text" => "石井翼"
+            "text" => "@石井翼"
           ]
       ]
     ]
   ];
+} else if ($text == '@uranai') {
+	$response_format_text = [
+    "type" => "template",
+    "altText" => "だれを占う？",
+    "template" => [
+      "type" => "buttons",
+      "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/uranai.jpg",
+      "title" => "占い先指定",
+      "text" => "だれを占う？",
+      "actions" => [
+          [
+            "type" => "message",
+            "label" => "川犬(kawaken)",
+            "text" => "@川犬(kawaken)"
+          ],
+          [
+            "type" => "message",
+            "label" => "石井翼",
+            "text" => "@石井翼"
+          ],
+          [
+            "type" => "message",
+            "label" => "逃亡者",
+            "text" => "@逃亡者"
+          ]
+      ]
+    ]
+  ];
+} else if ($text == '@川犬(kawaken)') {
+	$response_format_text = [
+    "type" => "template",
+    "altText" => "川犬(kawaken)は狂人だったよ",
+    "template" => [
+      "type" => "buttons",
+      "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/kyojin.jpeg",
+      "title" => "川犬(kawaken)の役職",
+      "text" => "狂人",
+      "actions" => [
+          [
+            "type" => "message",
+            "label" => "了解",
+            "text" => "@了解"
+          ]
+      ]
+    ]
+  ];
+} else if ($text == '@石井翼') {
+	$response_format_text = [
+    "type" => "template",
+    "altText" => "石井翼は村人だったよ",
+    "template" => [
+      "type" => "buttons",
+      "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/murabito.jpeg",
+      "title" => "石井翼の役職",
+      "text" => "村人",
+      "actions" => [
+          [
+            "type" => "message",
+            "label" => "了解",
+            "text" => "@了解"
+          ]
+      ]
+    ]
+  ];
+} else if ($text == '@end') {
+	$response_format_text = [
+    	"type" => "text",
+		"text" => "川犬(kawaken)は石井翼に投票したよ\n小野 祐輔は石井翼に投票したよ\n石井翼は小野 祐輔に投票したよ\n\n石井翼が２票で吊られました！\n\n\n石井翼の役職は村人だったよ\n人狼陣営の勝利！"
+  ];
 }
-
 
 /*
 //返信データ作成
