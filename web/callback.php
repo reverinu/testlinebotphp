@@ -1,117 +1,117 @@
 <?php
 $accessToken = getenv('LINE_CHANNEL_ACCESS_TOKEN');
-//ƒ†[ƒU[‚©‚ç‚ÌƒƒbƒZ[ƒWæ“¾
+//ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‹ã‚‰ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å–å¾—
 $json_string = file_get_contents('php://input');
 $jsonObj = json_decode($json_string);
 $type = $jsonObj->{"events"}[0]->{"message"}->{"type"};
-//ƒƒbƒZ[ƒWæ“¾
+//ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å–å¾—
 $text = $jsonObj->{"events"}[0]->{"message"}->{"text"};
-//ReplyTokenæ“¾
+//ReplyTokenå–å¾—
 $replyToken = $jsonObj->{"events"}[0]->{"replyToken"};
-//ƒƒbƒZ[ƒWˆÈŠO‚Ì‚Æ‚«‚Í‰½‚à•Ô‚³‚¸I—¹
+//ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ä»¥å¤–ã®ã¨ãã¯ä½•ã‚‚è¿”ã•ãšçµ‚äº†
 if($type != "text"){
 	exit;
 }
-//•ÔMƒf[ƒ^ì¬
-if ($text == 'YES') {
+//è¿”ä¿¡ãƒ‡ãƒ¼ã‚¿ä½œæˆ
+if ($text == 'ã¯ã„') {
   $response_format_text = [
     "type" => "template",
-    "altText" => "‚±‚¿‚ç‚ÌZZ‚Í‚¢‚©‚ª‚Å‚·‚©H",
+    "altText" => "ã“ã¡ã‚‰ã®ã€‡ã€‡ã¯ã„ã‹ãŒã§ã™ã‹ï¼Ÿ",
     "template" => [
       "type" => "buttons",
       "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/img1.jpg",
-      "title" => "››ƒŒƒXƒgƒ‰ƒ“",
-      "text" => "‚¨’T‚µ‚ÌƒŒƒXƒgƒ‰ƒ“‚Í‚±‚ê‚Å‚·‚Ë",
+      "title" => "â—‹â—‹ãƒ¬ã‚¹ãƒˆãƒ©ãƒ³",
+      "text" => "ãŠæ¢ã—ã®ãƒ¬ã‚¹ãƒˆãƒ©ãƒ³ã¯ã“ã‚Œã§ã™ã­",
       "actions" => [
           [
             "type" => "postback",
-            "label" => "—\–ñ‚·‚é",
+            "label" => "äºˆç´„ã™ã‚‹",
             "data" => "action=buy&itemid=123"
           ],
           [
             "type" => "postback",
-            "label" => "“d˜b‚·‚é",
+            "label" => "é›»è©±ã™ã‚‹",
             "data" => "action=pcall&itemid=123"
           ],
           [
             "type" => "message",
-            "label" => "ˆá‚­‚È‚¢‚â‚Â",
-            "text" => "ˆá‚¤‚â‚Â‚¨Šè‚¢"
+            "label" => "é•ããªã„ã‚„ã¤",
+            "text" => "é•ã†ã‚„ã¤ãŠé¡˜ã„"
           ]
       ]
     ]
   ];
-} else if ($text == '‚¢‚¢‚¦') {
+} else if ($text == 'ã„ã„ãˆ') {
   exit;
-} else if ($text == 'ˆá‚¤‚â‚Â‚¨Šè‚¢') {
+} else if ($text == 'é•ã†ã‚„ã¤ãŠé¡˜ã„') {
   $response_format_text = [
     "type" => "template",
-    "altText" => "Œó•â‚ğ‚R‚Â‚²ˆÄ“à‚µ‚Ä‚¢‚Ü‚·B",
+    "altText" => "å€™è£œã‚’ï¼“ã¤ã”æ¡ˆå†…ã—ã¦ã„ã¾ã™ã€‚",
     "template" => [
       "type" => "carousel",
       "columns" => [
           [
             "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/img2-1.jpg",
-            "title" => "œœƒŒƒXƒgƒ‰ƒ“",
-            "text" => "‚±‚¿‚ç‚É‚µ‚Ü‚·‚©H",
+            "title" => "â—â—ãƒ¬ã‚¹ãƒˆãƒ©ãƒ³",
+            "text" => "ã“ã¡ã‚‰ã«ã—ã¾ã™ã‹ï¼Ÿ",
             "actions" => [
               [
                   "type" => "postback",
-                  "label" => "—\–ñ‚·‚é",
+                  "label" => "äºˆç´„ã™ã‚‹",
                   "data" => "action=rsv&itemid=111"
               ],
               [
                   "type" => "postback",
-                  "label" => "“d˜b‚·‚é",
+                  "label" => "é›»è©±ã™ã‚‹",
                   "data" => "action=pcall&itemid=111"
               ],
               [
                   "type" => "uri",
-                  "label" => "Ú‚µ‚­Œ©‚éiƒuƒ‰ƒEƒU‹N“®j",
+                  "label" => "è©³ã—ãè¦‹ã‚‹ï¼ˆãƒ–ãƒ©ã‚¦ã‚¶èµ·å‹•ï¼‰",
                   "uri" => "https://" . $_SERVER['SERVER_NAME'] . "/"
               ]
             ]
           ],
           [
             "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/img2-2.jpg",
-            "title" => "££ƒŒƒXƒgƒ‰ƒ“",
-            "text" => "‚»‚ê‚Æ‚à‚±‚¿‚çHi‚Q‚Â–Új",
+            "title" => "â–²â–²ãƒ¬ã‚¹ãƒˆãƒ©ãƒ³",
+            "text" => "ãã‚Œã¨ã‚‚ã“ã¡ã‚‰ï¼Ÿï¼ˆï¼’ã¤ç›®ï¼‰",
             "actions" => [
               [
                   "type" => "postback",
-                  "label" => "—\–ñ‚·‚é",
+                  "label" => "äºˆç´„ã™ã‚‹",
                   "data" => "action=rsv&itemid=222"
               ],
               [
                   "type" => "postback",
-                  "label" => "“d˜b‚·‚é",
+                  "label" => "é›»è©±ã™ã‚‹",
                   "data" => "action=pcall&itemid=222"
               ],
               [
                   "type" => "uri",
-                  "label" => "Ú‚µ‚­Œ©‚éiƒuƒ‰ƒEƒU‹N“®j",
+                  "label" => "è©³ã—ãè¦‹ã‚‹ï¼ˆãƒ–ãƒ©ã‚¦ã‚¶èµ·å‹•ï¼‰",
                   "uri" => "https://" . $_SERVER['SERVER_NAME'] . "/"
               ]
             ]
           ],
           [
             "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/img2-3.jpg",
-            "title" => "¡¡ƒŒƒXƒgƒ‰ƒ“",
-            "text" => "‚Í‚½‚Ü‚½‚±‚¿‚çHi‚R‚Â–Új",
+            "title" => "â– â– ãƒ¬ã‚¹ãƒˆãƒ©ãƒ³",
+            "text" => "ã¯ãŸã¾ãŸã“ã¡ã‚‰ï¼Ÿï¼ˆï¼“ã¤ç›®ï¼‰",
             "actions" => [
               [
                   "type" => "postback",
-                  "label" => "—\–ñ‚·‚é",
+                  "label" => "äºˆç´„ã™ã‚‹",
                   "data" => "action=rsv&itemid=333"
               ],
               [
                   "type" => "postback",
-                  "label" => "“d˜b‚·‚é",
+                  "label" => "é›»è©±ã™ã‚‹",
                   "data" => "action=pcall&itemid=333"
               ],
               [
                   "type" => "uri",
-                  "label" => "Ú‚µ‚­Œ©‚éiƒuƒ‰ƒEƒU‹N“®j",
+                  "label" => "è©³ã—ãè¦‹ã‚‹ï¼ˆãƒ–ãƒ©ã‚¦ã‚¶èµ·å‹•ï¼‰",
                   "uri" => "https://" . $_SERVER['SERVER_NAME'] . "/"
               ]
             ]
@@ -136,7 +136,7 @@ if ($text == 'YES') {
             [
               "type" => "message",
               "label" => "YES",
-              "text" => "YES"
+              "text" => "ã¯ã„"
             ],
             [
               "type" => "message",
