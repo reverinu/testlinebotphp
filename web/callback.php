@@ -1,18 +1,9 @@
 <?php
 
-use LINE\LINEBot\Event\Parser\EventRequestParser;
-use LINE\LINEBot\HTTPClient;
-use LINE\LINEBot\MessageBuilder;
-use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
-use LINE\LINEBot\Response;
-use LINE\LINEBot\SignatureValidator;
 
 
 $accessToken = getenv('LINE_CHANNEL_ACCESS_TOKEN');
 $secret = "3095c84a53d38913b6716fb770f3f326";
-
-//$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('w9SmZJ6zm2ln3DRx5gw6lxNgLi5Ayjx7ftGGpyEsKhM0sGStTEdwNeu7UdSe7H3Mj7ayGjRubK0xHN7onGWxEwL6K8lHyukidy2my3LQT02u+EsRK+Mqsvj4fe0OVCIEYzFMAC+VzUTNjINaAQiRbwdB04t89/1O/w1cDnyilFU=');
-//$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '3095c84a53d38913b6716fb770f3f326']);
 
 //ユーザーからのメッセージ取得
 $json_string = file_get_contents('php://input');
@@ -22,9 +13,6 @@ $type = $jsonObj->{"events"}[0]->{"message"}->{"type"};
 $text = $jsonObj->{"events"}[0]->{"message"}->{"text"};
 //ReplyToken取得
 $replyToken = $jsonObj->{"events"}[0]->{"replyToken"};
-
-$sourseType = $jsonObj->{"events"}[1]->{"sourse"}->{"type"};
-$roomid = $jsonObj->{"events"}[1]->{"sourse"}->{"roomid"};
 
 $join = $jsonObj->{"events"}[0]->{"type"};
 
@@ -74,9 +62,27 @@ if ($text == '@help') {
 	];
 } else if ($text == '@vote') {
 	$response_format_text = [
-		"type" => "text",
-		"text" => "だれに投票する？"
-	];
+    "type" => "template",
+    "altText" => "だれに投票する？",
+    "template" => [
+      "type" => "buttons",
+      "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/jinro.png",
+      "title" => "投票",
+      "text" => "だれに投票する？",
+      "actions" => [
+          [
+            "type" => "message",
+            "label" => "川犬(kawaken)",
+            "data" => "action=buy&itemid=123"
+          ],
+          [
+            "type" => "message",
+            "label" => "石井 翼",
+            "data" => "action=pcall&itemid=123"
+          ]
+      ]
+    ]
+  ];
 }
 
 
