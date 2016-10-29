@@ -66,19 +66,19 @@ if ($text == '@help') {
     "altText" => "だれに投票する？",
     "template" => [
       "type" => "buttons",
-      "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/uranai.jpg",
+      "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/img1.jpg",
       "title" => "投票",
       "text" => "だれに投票する？",
       "actions" => [
           [
             "type" => "message",
             "label" => "川犬(kawaken)",
-            "data" => "action=buy&itemid=123"
+            "text" => "川犬(kawaken)"
           ],
           [
             "type" => "message",
             "label" => "石井翼",
-            "data" => "action=pcall&itemid=123"
+            "text" => "石井翼"
           ]
       ]
     ]
