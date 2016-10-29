@@ -1,5 +1,10 @@
 <?php
 $accessToken = getenv('LINE_CHANNEL_ACCESS_TOKEN');
+$secret = "3095c84a53d38913b6716fb770f3f326";
+
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($accessToken);
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $secret]);
+
 //ユーザーからのメッセージ取得
 $json_string = file_get_contents('php://input');
 $jsonObj = json_decode($json_string);
@@ -8,6 +13,11 @@ $type = $jsonObj->{"events"}[0]->{"message"}->{"type"};
 $text = $jsonObj->{"events"}[0]->{"message"}->{"text"};
 //ReplyToken取得
 $replyToken = $jsonObj->{"events"}[0]->{"replyToken"};
+
+$sourseType = $jsonObj->{"events"}[0]->{"sourse"}->{"roomid"};
+$roomid = $jsonObj->{"events"}[0]->{"sourse"}->{"roomid"};
+
+
 //メッセージ以外のときは何も返さず終了
 if($type != "text"){
 	exit;
@@ -29,6 +39,9 @@ if ($text == '@help') {
 		"type" => "text",
 		"text" => "ゲームはじまるよ"
 	];
+} else if ($text == '@bye') {
+	$response = $bot->leaveRoom($roomid);
+	echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 }
 
 
