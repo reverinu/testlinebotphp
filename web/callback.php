@@ -2,8 +2,8 @@
 $accessToken = getenv('LINE_CHANNEL_ACCESS_TOKEN');
 $secret = "3095c84a53d38913b6716fb770f3f326";
 
-$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($accessToken);
-$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $secret]);
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('w9SmZJ6zm2ln3DRx5gw6lxNgLi5Ayjx7ftGGpyEsKhM0sGStTEdwNeu7UdSe7H3Mj7ayGjRubK0xHN7onGWxEwL6K8lHyukidy2my3LQT02u+EsRK+Mqsvj4fe0OVCIEYzFMAC+VzUTNjINaAQiRbwdB04t89/1O/w1cDnyilFU=');
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '3095c84a53d38913b6716fb770f3f326']);
 
 //ユーザーからのメッセージ取得
 $json_string = file_get_contents('php://input');
