@@ -14,8 +14,8 @@ $text = $jsonObj->{"events"}[0]->{"message"}->{"text"};
 //ReplyToken取得
 $replyToken = $jsonObj->{"events"}[0]->{"replyToken"};
 
-$sourseType = $jsonObj->{"events"}[0]->{"sourse"}->{"roomid"};
-$roomid = $jsonObj->{"events"}[0]->{"sourse"}->{"roomid"};
+$sourseType = $jsonObj->{"events"}[1]->{"sourse"}->{"roomid"};
+$roomid = $jsonObj->{"events"}[1]->{"sourse"}->{"roomid"};
 
 
 //メッセージ以外のときは何も返さず終了
