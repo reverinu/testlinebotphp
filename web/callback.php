@@ -2,8 +2,8 @@
 $accessToken = getenv('LINE_CHANNEL_ACCESS_TOKEN');
 $secret = "3095c84a53d38913b6716fb770f3f326";
 
-$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($accessToken);
-$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $secret]);
+//$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($accessToken);
+//$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $secret]);
 
 //ユーザーからのメッセージ取得
 $json_string = file_get_contents('php://input');
@@ -40,8 +40,20 @@ if ($text == '@help') {
 		"text" => "ゲームはじまるよ"
 	];
 } else if ($text == '@bye') {
-	$response = $bot->leaveRoom($roomid);
-	echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+	//$response = $bot->leaveRoom($roomid);
+	//echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+	
+	$ch = curl_init("https://api.line.me/v2/bot/room/"+ $roomid + "/leave");
+	curl_setopt($ch, CURLOPT_POST, true);
+	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    	'Content-Type: application/json; charser=UTF-8',
+    	'Authorization: Bearer ' . $accessToken
+    	));
+	$result = curl_exec($ch);
+	curl_close($ch);
 }
 
 
