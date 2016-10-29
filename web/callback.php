@@ -66,7 +66,7 @@ if ($text == '@help') {
     "altText" => "だれに投票する？",
     "template" => [
       "type" => "buttons",
-      "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/jinro.jpeg",
+      "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/uranai.jpg",
       "title" => "投票",
       "text" => "だれに投票する？",
       "actions" => [
@@ -77,7 +77,7 @@ if ($text == '@help') {
           ],
           [
             "type" => "message",
-            "label" => "石井 翼",
+            "label" => "石井翼",
             "data" => "action=pcall&itemid=123"
           ]
       ]
