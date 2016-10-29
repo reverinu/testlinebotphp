@@ -13,7 +13,7 @@ if($type != "text"){
 	exit;
 }
 //返信データ作成
-if ($text == 'はい') {
+if ($text == 'YES') {
   $response_format_text = [
     "type" => "template",
     "altText" => "こちらの〇〇はいかがですか？",
@@ -128,20 +128,20 @@ if ($text == 'はい') {
 } else {
   $response_format_text = [
     "type" => "template",
-    "altText" => "こんにちわ 何かご用ですか？（はい／いいえ）",
+    "altText" => "hello",
     "template" => [
         "type" => "confirm",
-        "text" => "こんにちわ 何かご用ですか？ ご用ですよね？",
+        "text" => "hello",
         "actions" => [
             [
               "type" => "message",
-              "label" => "はい",
-              "text" => "はい"
+              "label" => "YES",
+              "text" => "YES"
             ],
             [
               "type" => "message",
-              "label" => "いいえ",
-              "text" => "いいえ"
+              "label" => "NO",
+              "text" => "NO"
             ]
         ]
     ]
