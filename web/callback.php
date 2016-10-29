@@ -119,7 +119,7 @@ if ($text == '‚Í‚¢') {
       ]
     ]
   ];
-} else if ($text == '1d100') {
+} else if ($text == '1d1000') {
 	$random = rand(1,100);
 	$response_format_text = [
 		"type" => "text",
