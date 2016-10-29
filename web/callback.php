@@ -50,31 +50,33 @@ if ($text == '@help') {
 } else if ($text == '@join') {
 	$response_format_text = [
 		"type" => "text",
-		"text" => "ゲームに参加するよ"
+		"text" => "ゲームに参加登録したよ！準備が出来たらグループの方で@startって言ってね！"
 	];
 } else if ($text == '@start') {
 	$response_format_text = [
 		"type" => "text",
-		"text" => "ゲームはじまるよ"
+		"text" => "ワオーーーン\n\n\n狼の遠吠えが聞こえる…\n\n夜時間です。各自行動をしてください。"
 	];
-} else if ($text == '@bye') {
-/*
-	$response = $bot->leaveRoom($roomid);
-	echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
-*/	
-	/*
-	$ch = curl_init("https://api.line.me/v2/bot/room/".$roomid."/leave");
-	curl_setopt($ch, CURLOPT_POST, true);
-	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post_data));
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    	'Content-Type: application/json; charser=UTF-8',
-    	'Authorization: Bearer ' . $accessToken
-    	));
-	$result = curl_exec($ch);
-	curl_close($ch);
-	*/
+} else if ($text == '@rule') {
+	$response_format_text = [
+		"type" => "text",
+		"text" => "ワンナイト人狼ルール説明\n\nある日、あなたたちの住んでいる村に狼がいるといううわさが流れてきた。\nこの村は人が１０人にも満たなくて、１日以内に人狼を探し出さないといけない！\n\n村陣営勝利条件：人狼を吊ること\n狼陣営勝利条件：人狼以外を吊ること"
+	];
+} else if ($text == '@skip') {
+	$response_format_text = [
+		"type" => "text",
+		"text" => "時間をスキップしたよ。\n昼時間になりました。この中に人狼が居ます。議論して探してください"
+	];
+} else if ($text == '@yakushoku') {
+	$response_format_text = [
+		"type" => "text",
+		"text" => "あなたは人狼です"
+	];
+} else if ($text == '@vote') {
+	$response_format_text = [
+		"type" => "text",
+		"text" => "だれに投票する？"
+	];
 }
 
 
