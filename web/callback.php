@@ -1,4 +1,13 @@
 <?php
+
+use LINE\LINEBot\Event\Parser\EventRequestParser;
+use LINE\LINEBot\HTTPClient;
+use LINE\LINEBot\MessageBuilder;
+use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
+use LINE\LINEBot\Response;
+use LINE\LINEBot\SignatureValidator;
+
+
 $accessToken = getenv('LINE_CHANNEL_ACCESS_TOKEN');
 $secret = "3095c84a53d38913b6716fb770f3f326";
 
@@ -45,7 +54,7 @@ if ($text == '@help') {
 	echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 */	
 	/*
-	$ch = curl_init("https://api.line.me/v2/bot/room/"+ $roomid + "/leave");
+	$ch = curl_init("https://api.line.me/v2/bot/room/".$roomid."/leave");
 	curl_setopt($ch, CURLOPT_POST, true);
 	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
