@@ -12,6 +12,27 @@ $replyToken = $jsonObj->{"events"}[0]->{"replyToken"};
 if($type != "text"){
 	exit;
 }
+
+
+if ($text == '@help') {
+	$response_format_text = [
+		"type" => "text",
+		"text" => "ヘルプだよ"
+	];
+} else if ($text == '@join') {
+	$response_format_text = [
+		"type" => "text",
+		"text" => "ゲームに参加するよ"
+	];
+} else if ($text == '@start') {
+	$response_format_text = [
+		"type" => "text",
+		"text" => "ゲームはじまるよ"
+	];
+}
+
+
+
 //返信データ作成
 if ($text == 'はい') {
   $response_format_text = [
