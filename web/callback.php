@@ -32,7 +32,7 @@ if ($text == '@help') {
 }
 
 
-
+/*
 //返信データ作成
 if ($text == 'はい') {
   $response_format_text = [
@@ -168,6 +168,7 @@ if ($text == 'はい') {
     ]
   ];
 }
+*/
 $post_data = [
 	"replyToken" => $replyToken,
 	"messages" => [$response_format_text]
