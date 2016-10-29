@@ -58,12 +58,12 @@ if ($text == '@help') {
 } else if ($text == '@haiyaku') {
 	$response_format_text = [
     "type" => "template",
-    "altText" => "あなたは狂人です",
+    "altText" => "あなたは占い師です",
     "template" => [
       "type" => "buttons",
-      "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/kyojin.jpeg",
+      "thumbnailImageUrl" => "https://" . $_SERVER['SERVER_NAME'] . "/uranai.jpg",
       "title" => "あなたの役職",
-      "text" => "あなたは狂人です。",
+      "text" => "あなたは占い師です。",
       "actions" => [
           [
             "type" => "message",
