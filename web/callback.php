@@ -26,10 +26,19 @@ $replyToken = $jsonObj->{"events"}[0]->{"replyToken"};
 $sourseType = $jsonObj->{"events"}[1]->{"sourse"}->{"type"};
 $roomid = $jsonObj->{"events"}[1]->{"sourse"}->{"roomid"};
 
+$join = $jsonObj->{"type"};
+
 
 //メッセージ以外のときは何も返さず終了
 if($type != "text"){
 	exit;
+}
+
+if($join == 'join'){
+	$response_format_text = [
+		"type" => "text",
+		"text" => "でゅふふふふ"
+	];
 }
 
 
