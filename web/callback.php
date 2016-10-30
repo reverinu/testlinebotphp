@@ -86,12 +86,12 @@ if ($text == '@help') {
           [
             "type" => "message",
             "label" => "川犬(kawaken)",
-            "text" => "@川犬(kawaken)"
+            "text" => "vote@川犬(kawaken)"
           ],
           [
             "type" => "message",
             "label" => "石井翼",
-            "text" => "@石井翼"
+            "text" => "vote@石井翼"
           ]
       ]
     ]
@@ -109,22 +109,22 @@ if ($text == '@help') {
           [
             "type" => "message",
             "label" => "川犬(kawaken)",
-            "text" => "@川犬(kawaken)"
+            "text" => "uranai@川犬(kawaken)"
           ],
           [
             "type" => "message",
             "label" => "石井翼",
-            "text" => "@石井翼"
+            "text" => "uranai@石井翼"
           ],
           [
             "type" => "message",
             "label" => "逃亡者",
-            "text" => "@逃亡者"
+            "text" => "uranai@逃亡者"
           ]
       ]
     ]
   ];
-} else if ($text == '@川犬(kawaken)') {
+} else if ($text == 'uranai@川犬(kawaken)') {
 	$response_format_text = [
     "type" => "template",
     "altText" => "川犬(kawaken)は狂人だったよ",
@@ -142,7 +142,7 @@ if ($text == '@help') {
       ]
     ]
   ];
-} else if ($text == '@石井翼') {
+} else if ($text == 'uranai@石井翼') {
 	$response_format_text = [
     "type" => "template",
     "altText" => "石井翼は村人だったよ",
@@ -160,6 +160,16 @@ if ($text == '@help') {
       ]
     ]
   ];
+} else if ($text == 'vote@川犬(kawaken)') {
+	$response_format_text = [
+		"type" => "text",
+		"text" => "投票を受け付けたよ！"
+	];
+} else if ($text == 'vote@石井翼') {
+	$response_format_text = [
+		"type" => "text",
+		"text" => "投票を受け付けたよ！"
+	];
 } else if ($text == '@end') {
 	$response_format_text = [
     	"type" => "text",
